@@ -1,0 +1,4 @@
+<Simulation version="4.2.3">
+   <PythonScript Type="PythonScript">Simulation/Gastrulation.py</PythonScript>
+   <Resource Type="Python">Simulation/GastrulationSteppables.py</Resource>
+</Simulation>
