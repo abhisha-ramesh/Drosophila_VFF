@@ -113,8 +113,8 @@ def configure_simulation():
     PluginElmnt.ElementCC3D("CellType", {"TypeId": "4", "TypeName": "basal_prime"})
     PluginElmnt.ElementCC3D("CellType", {"TypeId": "5", "TypeName": "core_prime"})
     PluginElmnt.ElementCC3D("CellType", {"TypeId": "6", "TypeName": "vm"})
-    PluginElmnt.ElementCC3D("CellType", {"TypeId": "7", "TypeName": "new_basal"})
-    PluginElmnt.ElementCC3D("CellType", {"TypeId": "8", "TypeName": "new_basal_prime"})
+    PluginElmnt.ElementCC3D("CellType", {"TypeId": "7", "TypeName": "core2"})
+    PluginElmnt.ElementCC3D("CellType", {"TypeId": "8", "TypeName": "core2_prime"})
 
     #  List of plugins used
     CompuCell3DElmnt.ElementCC3D("Plugin", {"Name": "VolumeLocalFlex"})
@@ -134,8 +134,8 @@ def configure_simulation():
     contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "core_prime"}, 100)
     contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "basal_prime"}, 8)
     contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "vm"}, 8)
-    contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "new_basal"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "new_basal_prime"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "core2"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "Medium", "Type2": "core2_prime"}, 100)
     
     contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "apical"}, 10)
     contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "core_prime"}, 100)
@@ -143,8 +143,8 @@ def configure_simulation():
     contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "basal_prime"}, 100)
     contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "basal"}, 100)
     contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "vm"}, 50)
-    contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "new_basal_prime"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "new_basal"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "core2_prime"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "apical", "Type2": "core2"}, 100)
     
     contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "core_prime"}, 10)
     contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "core"}, 100) 
@@ -155,10 +155,10 @@ def configure_simulation():
     contact.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "basal"}, 100)
     contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "vm"}, 100)
     contact.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "vm"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "new_basal"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "new_basal_prime"}, 10)
-    contact.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "new_basal"}, 10)
-    contact.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "new_basal_prime"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "core2"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "core", "Type2": "core2_prime"}, 10)
+    contact.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "core2"}, 10)
+    contact.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "core2_prime"}, 100)
     
     contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "basal_prime"}, 5)
     contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "basal"}, 10)
@@ -166,18 +166,18 @@ def configure_simulation():
     contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "vm"}, 100)
     contact.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "vm"}, 100)
     
-    contact.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "new_basal"}, 50)
-    contact.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "new_basal_prime"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "new_basal"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "new_basal_prime"}, 50)
+    contact.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "core2"}, 50)
+    contact.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "core2_prime"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "core2"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "basal", "Type2": "core2_prime"}, 50)
     
     contact.ElementCC3D("Energy", {"Type1": "vm", "Type2": "vm"}, 0)
-    contact.ElementCC3D("Energy", {"Type1": "vm", "Type2": "new_basal"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "vm", "Type2": "new_basal_prime"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "vm", "Type2": "core2"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "vm", "Type2": "core2_prime"}, 100)
     
-    contact.ElementCC3D("Energy", {"Type1": "new_basal", "Type2": "new_basal_prime"}, 10)
-    contact.ElementCC3D("Energy", {"Type1": "new_basal", "Type2": "new_basal"}, 100)
-    contact.ElementCC3D("Energy", {"Type1": "new_basal_prime", "Type2": "new_basal_prime"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "core2", "Type2": "core2_prime"}, 10)
+    contact.ElementCC3D("Energy", {"Type1": "core2", "Type2": "core2"}, 100)
+    contact.ElementCC3D("Energy", {"Type1": "core2_prime", "Type2": "core2_prime"}, 100)
     
     # -neighbor order
     contact.ElementCC3D("NeighborOrder", {}, 4)
@@ -192,12 +192,12 @@ def configure_simulation():
     contactIn.ElementCC3D("Energy", {"Type1": "apical", "Type2": "core_prime"}, 2.0)
     contactIn.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "vm"}, 100)
     
-    contactIn.ElementCC3D("Energy", {"Type1": "apical", "Type2": "new_basal"}, 100)
-    contactIn.ElementCC3D("Energy", {"Type1": "core", "Type2": "new_basal"}, 2)
-    contactIn.ElementCC3D("Energy", {"Type1": "basal", "Type2": "new_basal"}, 2)
-    contactIn.ElementCC3D("Energy", {"Type1": "apical", "Type2": "new_basal_prime"}, 100)
-    contactIn.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "new_basal_prime"}, 2)
-    contactIn.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "new_basal_prime"}, 2)
+    contactIn.ElementCC3D("Energy", {"Type1": "apical", "Type2": "core2"}, 100)
+    contactIn.ElementCC3D("Energy", {"Type1": "core", "Type2": "core2"}, 2)
+    contactIn.ElementCC3D("Energy", {"Type1": "basal", "Type2": "core2"}, 2)
+    contactIn.ElementCC3D("Energy", {"Type1": "apical", "Type2": "core2_prime"}, 100)
+    contactIn.ElementCC3D("Energy", {"Type1": "core_prime", "Type2": "core2_prime"}, 2)
+    contactIn.ElementCC3D("Energy", {"Type1": "basal_prime", "Type2": "core2_prime"}, 2)
     
     # -neighbor order
     contactIn.ElementCC3D("NeighborOrder", {}, 4)
