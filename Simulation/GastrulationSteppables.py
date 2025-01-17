@@ -66,7 +66,7 @@ class Draw(SteppableBasePy):
                 rMin=rMax
                 rMax=int(sqrt(rMin*rMin + tV*0.3/dAng))
             if (Layer==nLayers-3):  
-                type=self.NEW_BASAL
+                type=self.CORE2
                 rMin=rMax
                 rMax=int(sqrt(rMin*rMin + tV*0.2/dAng))
             elif (Layer==nLayers-2): 
@@ -93,9 +93,9 @@ class Draw(SteppableBasePy):
                         cell = self.new_cell(self.BASAL_PRIME)    #two cell-types are made to prevent cells from fragmenting
                 elif(Layer==nLayers-3):
                     if(i%2 == 1):
-                        cell = self.new_cell(self.NEW_BASAL)          
+                        cell = self.new_cell(self.CORE2)          
                     elif(i%2 == 0):                               
-                        cell = self.new_cell(self.NEW_BASAL_PRIME)    
+                        cell = self.new_cell(self.CORE2_PRIME)    
                 elif(Layer==nLayers-2):
                     if(i%2 == 1):
                         cell = self.new_cell(self.CORE)
@@ -140,17 +140,17 @@ class Draw(SteppableBasePy):
                     cell.lambdaVolume=self.LamV_bas
                     bas_prime_list.append(cell.id)
 
-            new_basal_list = []
-            new_basal_prime_list = []
-            for cell in self.cellListByType(self.NEW_BASAL): #NEW BASAL(same properties as core cells)
+            core2_list = []
+            core2_prime_list = []
+            for cell in self.cellListByType(self.CORE2): #NEW BASAL(same properties as core cells)
                 cell.targetVolume=cell.volume
                 cell.lambdaVolume=self.LamV_core
-                new_basal_list.append(cell.id)
+                core2_list.append(cell.id)
                                     
-            for cell in self.cellListByType(self.NEW_BASAL_PRIME): #NEW BASAL PRIME(same properties as core prime cells)
+            for cell in self.cellListByType(self.CORE2_PRIME): #NEW BASAL PRIME(same properties as core prime cells)
                 cell.targetVolume=cell.volume
                 cell.lambdaVolume=self.LamV_core
-                new_basal_prime_list.append(cell.id)
+                core2_prime_list.append(cell.id)
            
             core_list = []
             core_prime_list = []
@@ -204,7 +204,7 @@ class Draw(SteppableBasePy):
         if (mcs <= 26000):
             #Cells grow over time by adding more volume to new-basal cell types
             #The growth rates are smaller for neuroectodermal cells
-            for cell in self.cellListByType(self.NEW_BASAL,self.NEW_BASAL_PRIME): 
+            for cell in self.cellListByType(self.CORE2,self.CORE2_PRIME): 
                 if ((1*self.tot)+self.mid-9<= cell.id <=(1*self.tot)+self.mid+9):
                     cell.targetVolume = cell.targetVolume + delta
                     cell.lambdaVolume=self.LamV_core*5
@@ -297,10 +297,10 @@ class cell_internal_links(SteppableBasePy):
         CELL3 =  self.fetch_cell_by_id(142)
         self.bas_core_distance = self.distance_between_cells(CELL1, CELL2)      #initial distance between basal-core
         self.ap_core_distance = self.distance_between_cells(CELL2, CELL3)       #and apical-core domains
-        # print("printing initial basal-new basal, new_basal-core and core-apical distance",self.distance_between_cells(CELL0, CELL1),self.bas_core_distance,self.ap_core_distance)
+        # print("printing initial basal-new basal, core2-core and core-apical distance",self.distance_between_cells(CELL0, CELL1),self.bas_core_distance,self.ap_core_distance)
         # print(self.distance_between_cells(CELL0, CELL3))
-        self.create_internal_links(self.CORE, self.NEW_BASAL)                       #creates internal links 
-        self.create_internal_links(self.CORE_PRIME, self.NEW_BASAL_PRIME)
+        self.create_internal_links(self.CORE, self.CORE2)                       #creates internal links 
+        self.create_internal_links(self.CORE_PRIME, self.CORE2_PRIME)
           
         self.counter = 0
         
@@ -308,9 +308,9 @@ class cell_internal_links(SteppableBasePy):
         if (mcs < 13*self.t_relax):
             self.profile_counter = (mcs // self.t_relax)            #counts the myosin profile and updates cell stiffness
             self.delete_internal_links(self.CORE)                   #by deleting existing internal links and creating
-            self.create_internal_links(self.CORE, self.NEW_BASAL)       #new links between respective apical-core and basal-core
+            self.create_internal_links(self.CORE, self.CORE2)       #new links between respective apical-core and basal-core
             self.delete_internal_links(self.CORE_PRIME)             #compartments. The stiffness parameters are upadted at each myosin profile
-            self.create_internal_links(self.CORE_PRIME, self.NEW_BASAL_PRIME)
+            self.create_internal_links(self.CORE_PRIME, self.CORE2_PRIME)
 
     
     def delete_internal_links(self, core_type):                 #function to delete existing internal links 
