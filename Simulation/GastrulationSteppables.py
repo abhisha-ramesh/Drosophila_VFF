@@ -142,12 +142,12 @@ class Draw(SteppableBasePy):
 
             core2_list = []
             core2_prime_list = []
-            for cell in self.cellListByType(self.CORE2): #NEW BASAL(same properties as core cells)
+            for cell in self.cellListByType(self.CORE2): #CORE2(same properties as core cells)
                 cell.targetVolume=cell.volume
                 cell.lambdaVolume=self.LamV_core
                 core2_list.append(cell.id)
                                     
-            for cell in self.cellListByType(self.CORE2_PRIME): #NEW BASAL PRIME(same properties as core prime cells)
+            for cell in self.cellListByType(self.CORE2_PRIME): #CORE2 PRIME(same properties as core prime cells)
                 cell.targetVolume=cell.volume
                 cell.lambdaVolume=self.LamV_core
                 core2_prime_list.append(cell.id)
