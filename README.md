@@ -15,7 +15,7 @@ To investigate the role of cell stiffness parameters (e.g. central vs peripheral
 For each parameter combination, 30 independent ensemble runs are performed and each run generates one _furrow_depth.txt_.
 
 ## Ensemble Average of Furrow Depth Data
-After all simulations complete, the ensemble data are averaged using the _analysis_main.py_ file in _analysis_scripts_on_hpc_ directory (submitted using _submit.csh_ on an LSF system). For each parameter combination (e.g., λ_cent, λ_peri), a new file is generated containing time and average furrow depth One file per stiffness parameter combination. 
+After all simulations complete, the ensemble data are averaged using the _analysis_main.py_ file in _analysis_scripts_on_hpc_ directory (submitted using _submit.csh_ on an LSF system). For each parameter combination (e.g., λ_cent, λ_peri), a new file is generated containing time and average furrow depth (one file per stiffness parameter combination). 
 
 ## Phase Map Generation
 After averaging, averaged files are copied from HPC. The final furrow depth (last time point) is extracted and a phase map is generated. An example is listed in _plot_phase_map_from_data.zip_ .
